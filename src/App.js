@@ -4,10 +4,12 @@ import HomePage from './pages/HomePage';
 import ArticleList from './pages/ArticleList';
 import AboutPage from './pages/AboutPage';
 import ArticlePage from './pages/ArticlePage';
+import NavBar from './NavBar';
 
 function App() {
   return (    
     <div className="App">
+      <NavBar />
       <div id="page-body">
       <Switch>
         <Route exact path="/">

@@ -21,7 +21,7 @@ function App() {
         <Route path="/articles-list">
             <ArticleList />
         </Route>
-        <Route path="/article">
+        <Route path="/article/:name">
             <ArticlePage />
         </Route>
       </Switch>

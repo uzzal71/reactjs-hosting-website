@@ -1,7 +1,7 @@
 import './App.css';
 import { Router, Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import ArticleList from './pages/ArticleList';
+import ArticleListPage from './pages/ArticleListPage';
 import AboutPage from './pages/AboutPage';
 import ArticlePage from './pages/ArticlePage';
 import NavBar from './NavBar';
@@ -19,7 +19,7 @@ function App() {
             <AboutPage />
         </Route>
         <Route path="/articles-list">
-            <ArticleList />
+            <ArticleListPage />
         </Route>
         <Route path="/article/:name">
             <ArticlePage />

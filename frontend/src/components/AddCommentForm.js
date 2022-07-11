@@ -18,11 +18,20 @@ const AddCommentForm = ({ articleName, setArticleInfo }) => {
 
     const commentArticle = async () => {
         const result = await fetch(`/api/articles/${articleName}/add-comment`, {
-            method: "POST"
+            method: "POST",
+            body: JSON.stringify({
+                username: username.value, 
+                text: commentText.value
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
 
         const body = await result.body;
         setArticleInfo(body);
+        resetUsername();
+        resetCommentText();
     };
 
     return (

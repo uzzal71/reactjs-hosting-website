@@ -10,7 +10,12 @@ const ArticlePage = () => {
     const article = articleContent.find(article => article.name === name);
 
     useEffect(() => {
-        setArticleInfo({ upvotes: Math.ceil(Math.random() * 10) })
+        const fetchData = async () => {
+            const result = await fetch(`/api/articles/${name}`);
+            const body = await result.json();
+            setArticleInfo(body);
+        };
+        fetchData();
     }, [name]);
 
     if (!article) return <NotFoundPage />

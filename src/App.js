@@ -5,6 +5,7 @@ import ArticleListPage from './pages/ArticleListPage';
 import AboutPage from './pages/AboutPage';
 import ArticlePage from './pages/ArticlePage';
 import NavBar from './NavBar';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (    
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route path="/article/:name">
             <ArticlePage />
+        </Route>
+        <Route>
+          <NotFoundPage />
         </Route>
       </Switch>
       </div>

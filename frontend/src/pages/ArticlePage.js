@@ -1,19 +1,25 @@
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ArticleList from '../components/ArticleList';
 import articleContent from './article-content';
 import NotFoundPage from './NotFoundPage';
 
 const ArticlePage = () => {
+    const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: [] });
     const { name } = useParams();
     const article = articleContent.find(article => article.name === name);
 
-    if (!article) return <NotFoundPage />
+    useEffect(() => {
+        setArticleInfo({ upvotes: 3 })
+    }, []);
 
+    if (!article) return <NotFoundPage />
     const otherArticles = articleContent.filter(article => article.name !== name);
 
     return (
         <>
             <h1>{article.title}</h1>
+            <p>This post has been upvoted {articleInfo.upvotes} times</p>
             {article.content.map((paragraph, key) => (
                 <p key={key}>{paragraph}</p>
             ))}

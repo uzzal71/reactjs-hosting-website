@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ArticleList from '../components/ArticleList';
+import CommentList from '../components/CommentList';
 import articleContent from './article-content';
 import NotFoundPage from './NotFoundPage';
 
@@ -28,6 +29,7 @@ const ArticlePage = () => {
             {article.content.map((paragraph, key) => (
                 <p key={key}>{paragraph}</p>
             ))}
+            <CommentList comments={articleInfo.comments}/>
             <h3>Other Articles:</h3>
             <ArticleList articles={otherArticles}/>
         </>

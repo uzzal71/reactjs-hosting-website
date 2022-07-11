@@ -16,7 +16,7 @@ const AddCommentForm = ({ articleName, setArticleInfo }) => {
     const [username, resetUsername] = useInput("");
     const [commentText, resetCommentText] = useInput("");
 
-    const commentArticle = async () => {
+    const addComment = async () => {
         const result = await fetch(`/api/articles/${articleName}/add-comment`, {
             method: "POST",
             body: JSON.stringify({
@@ -28,7 +28,7 @@ const AddCommentForm = ({ articleName, setArticleInfo }) => {
             }
         });
 
-        const body = await result.body;
+        const body = await result.json();
         setArticleInfo(body);
         resetUsername();
         resetCommentText();
@@ -38,17 +38,15 @@ const AddCommentForm = ({ articleName, setArticleInfo }) => {
         <>
             <div id="add-comment-form">
                 <h2>Add a Comment:</h2>
-                <form onSubmit={() => commentArticle()}>
-                    <label>
-                        Name:
-                        <input type="text" {...username}/>
-                    </label>
-                    <label>
-                        Comment:
-                        <textarea rows="4" cols="50" {...commentText}/>
-                    </label>
-                    <button>Add Comment</button>
-                </form>
+                <label>
+                    Name:
+                    <input type="text" {...username}/>
+                </label>
+                <label>
+                    Comment:
+                    <textarea rows="4" cols="50" {...commentText}/>
+                </label>
+                <button onClick={() => addComment()}>Add Comment</button>
             </div>
         </>
     );

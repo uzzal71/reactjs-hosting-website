@@ -10,8 +10,8 @@ const ArticlePage = () => {
     const article = articleContent.find(article => article.name === name);
 
     useEffect(() => {
-        setArticleInfo({ upvotes: 3 })
-    }, []);
+        setArticleInfo({ upvotes: Math.ceil(Math.random() * 10) })
+    }, [name]);
 
     if (!article) return <NotFoundPage />
     const otherArticles = articleContent.filter(article => article.name !== name);

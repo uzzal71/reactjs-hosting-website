@@ -5,6 +5,7 @@ import CommentList from '../components/CommentList';
 import UpvoteSection from '../components/UpvoteSection';
 import articleContent from './article-content';
 import NotFoundPage from './NotFoundPage';
+import AddCommentForm from './../components/AddCommentForm';
 
 const ArticlePage = () => {
     const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: [] });
@@ -34,7 +35,13 @@ const ArticlePage = () => {
             {article.content.map((paragraph, key) => (
                 <p key={key}>{paragraph}</p>
             ))}
+        
             <CommentList comments={articleInfo.comments}/>
+            <AddCommentForm 
+                articleName={name} 
+                setArticleInfo={setArticleInfo} 
+            />
+
             <h3>Other Articles:</h3>
             <ArticleList articles={otherArticles}/>
         </>
